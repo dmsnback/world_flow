@@ -13,9 +13,9 @@ logger = logging.getLogger(__name__)
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    logging.info("Приложение World Flow запущено")
+    logging.info("Приложение Word Flow запущено")
     yield
-    logging.info("Приложение World Flow остановлено")
+    logging.info("Приложение Word Flow остановлено")
 
 
 app = FastAPI(

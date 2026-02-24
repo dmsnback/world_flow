@@ -3,7 +3,7 @@ from datetime import datetime
 from pydantic import BaseModel
 
 
-class QuestionResponse(BaseModel):
+class QuestionResponseSchema(BaseModel):
     word: str
     options: list[str]
     correct: str

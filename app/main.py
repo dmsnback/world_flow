@@ -5,6 +5,8 @@ from fastapi import FastAPI
 
 from app.core.config import settings
 from app.core.logging import setup_logging
+from app.routers.questions import question_router
+from app.routers.words import word_router
 
 setup_logging()
 
@@ -23,3 +25,6 @@ app = FastAPI(
     description=settings.description,
     lifespan=lifespan,
 )
+
+app.include_router(word_router)
+app.include_router(question_router)

@@ -44,7 +44,9 @@ class CRUDWord:
             result = await session.execute(query)
             find_word = result.scalars().first()
             if find_word:
-                logger.info(f"Получено слово: '{find_word}'")
+                logger.info(
+                    f"Получено слово: '{find_word.english} - {find_word.russian}'"
+                )
             else:
                 logger.warning(f"Слово '{word}' не найдено в базе")
             return find_word

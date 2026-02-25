@@ -5,7 +5,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.database import get_session
 from app.crud.words import CRUDWord
-from app.schemas.words import QuestionResponseSchema
+from app.schemas.questions import QuestionReadSchema
 
 question_router = APIRouter(
     prefix="/questions",
@@ -18,11 +18,11 @@ word_crud = CRUDWord()
 
 
 @question_router.get(
-    "", response_model=QuestionResponseSchema, summary="Получение вопроса"
+    "", response_model=QuestionReadSchema, summary="Получение вопроса"
 )
 async def get_question(
     session: AsyncSession = Depends(get_session),
-) -> QuestionResponseSchema:
+) -> QuestionReadSchema:
     words = await word_crud.get_all_words(session)
     if len(words) < 4:
         return {"error": "В базее должно быть минимум 4 слова"}
